@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                ansiblePlaybook installation: 'ansible2', inventory: 'hosts', playbook: 'sample.yml'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                ansiblePlaybook installation: 'ansible2', inventory: 'hosts', playbook: 'sample.yml'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+                ansiblePlaybook installation: 'ansible2', inventory: 'hosts', playbook: 'sample.yml'
+            }
+        }
+    }
+}
